@@ -1,0 +1,21 @@
+.login-page-wrapper{
+    background: url('../../../public/images/login-bg.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    width: 1440px;
+    height: 100vh;
+}
+.login-page-container{
+    background: rgba(255, 255, 255, 0.6);
+    -webkit-backdrop-filter:blur(10px);
+    backdrop-filter: blur(10px);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    width: 1440px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
