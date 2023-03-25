@@ -87,7 +87,7 @@ legend {
 	display: block;
 }
 html{
-	background-color: rgb(153, 152, 152);
+	background: #F4F4F4;
 	font-family: 'Roboto', sans-serif;
 	width: 1440px;
 	height: 100vh;
@@ -96,5 +96,7 @@ html{
 }
 body{
 	width: 100%;
-    height: 100%;
+	height: 100%;
+	
+	border: 1px solid blue;
 }

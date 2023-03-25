@@ -1,0 +1,15 @@
+.hotels-page-container{
+    padding-bottom: 26px;
+}
+.hotels-page-main{
+    width: 1048px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+.hotels-page-main aside{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}

@@ -1,0 +1,24 @@
+.found-items-container{
+    height: 563px;
+    width: 600px;
+    overflow: auto;
+}
+.found-item{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(135, 135, 135, 0.2);;
+    padding: 16px 16px 16px 0;
+
+}
+.found-item__info{
+    margin-right: auto;
+    margin-left: 24px;
+}
+.found-item__price{
+    margin-right: 0;
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+}

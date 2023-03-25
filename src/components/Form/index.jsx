@@ -77,7 +77,7 @@ function Form() {
   return (
     <div className='form-container'>
         <h1>Simple Hotel Check</h1>
-        <form onSubmit={()=>navigate('/Main')} className='form'>
+        <form onSubmit={()=>navigate('/Hotels')} className='form'>
             <div className='form__login-container'>
                 <label>
                     <span className={`${addEmailErrorClass()}`}>Логин</span>
