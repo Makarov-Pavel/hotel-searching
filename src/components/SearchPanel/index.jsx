@@ -4,10 +4,11 @@ import today from '../../utils/calculateTodaysDate'
 import defaultLastDay from '../../utils/calculateDefaultLastDay'
 import { calculateLastDay } from '../../utils/calculateLastDay'
 import { useDispatch, useSelector } from 'react-redux'
+import { setDateAction, setDaysAction, setItems, setLocationAction } from '../../redux/actionCreators'
 
 function SearchPanel() {
-    const location = useSelector(store => store.test.location)
-    const days = useSelector(store => store.test.days)
+    const location = useSelector(store => store.queryParams.location)
+    const days = useSelector(store => store.queryParams.days)
 
     const [locationValue, setLocationValue] = useState(location)
     const [daysValue, setDaysValue] = useState(days)
@@ -21,7 +22,7 @@ function SearchPanel() {
         fetch(`http://engine.hotellook.com/api/v2/cache.json?location=${locationValue}&currency=rub&checkIn=${dateRef.current.value}&checkOut=${defaultLastDay}&limit=20`)
         .then(res => res.json())
         .then(arr => {
-            dispatch({type:'setItems', payload: arr})
+            dispatch(setItems(arr))
         })
     },[])
 
@@ -33,10 +34,10 @@ function SearchPanel() {
         fetch(`http://engine.hotellook.com/api/v2/cache.json?location=${locationValue}&currency=rub&checkIn=${dateRef.current.value}&checkOut=${lastDay}&limit=20`)
         .then(res => res.json())
         .then(arr => {
-            dispatch({type:'setLocation', payload: locationRef.current.value})
-            dispatch({type:'setDate', payload: dateRef.current.value})
-            dispatch({type:'setDays', payload: daysRef.current.value})
-            dispatch({type:'setItems', payload: arr})
+            dispatch(setLocationAction(locationRef.current.value))
+            dispatch(setDateAction(dateRef.current.value))
+            dispatch(setDaysAction(daysRef.current.value))
+            dispatch(setItems(arr))
         })
     }
 

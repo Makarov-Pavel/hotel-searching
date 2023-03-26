@@ -15,10 +15,32 @@
     margin-left: 24px;
 }
 .found-item__price{
+    height: 66px;
     margin-right: 0;
     margin-left: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 22px;
+    justify-content: space-between;
+}
+.found-item__star{
+    color: #C4C3B5
+}
+.active{
+    color: #CDBC1E;
+}
+img[alt='house']{
+    padding: 13px 15px 16px 14px;
+    background: url('../../../public/images/hotel-img.png');
+    background-position: center center;
+}
+.found-item__Heart{
+    width:30px;
+    height:27px;
+}
+.found-item__Heart_colored{
+    color:#E55858;
+}
+.found-item__Heart_outline{
+    color:#C4C4C4;
 }

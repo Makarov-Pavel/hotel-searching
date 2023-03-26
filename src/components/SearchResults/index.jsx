@@ -6,9 +6,9 @@ import {SlArrowRight} from 'react-icons/sl'
 import { dateFormatChange } from '../../utils/dateFormatChange'
 
 function SearchResults() {
-  const locationName = useSelector(store => store.test.location)
-  const date = useSelector(store => store.test.date)
-  const favorites = useSelector(store => store.test.favorites)
+  const location = useSelector(store => store.queryParams.location)
+  const date = useSelector(store => store.queryParams.date)
+  const favorites = useSelector(store => store.favoritesReducer.favorites)
 
   const hotelsCountWordHelper = (hotels) => {
     let str = String(hotels)
@@ -25,7 +25,7 @@ function SearchResults() {
     <div className='search-results-container'>
         <header className='search-results__header'>
           <div>
-            Отели <SlArrowRight /> {locationName}
+            Отели <SlArrowRight /> {location}
           </div>
           <div>
             {dateFormatChange(date)}

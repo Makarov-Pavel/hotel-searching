@@ -1,14 +1,15 @@
 import {createStore} from 'redux'
-import reducer from './reducers';
+import { combineReducers } from "redux";
+import { queryParams } from './reducers';
+import { favoritesReducer } from './reducers/favoritesReducer';
+import { itemsReducer } from './reducers/itemsReducer';
 
-// // Подключение redux devtools
-// const composeEnhancers =
-//   typeof window === 'object' &&
-//   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?   
-//     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose;
-
+const reducer = combineReducers({
+    queryParams,
+    favoritesReducer,
+    itemsReducer
+})
 
 const store =  createStore(reducer);
-
 
 export default store

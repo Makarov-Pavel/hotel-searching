@@ -1,46 +1,21 @@
-import { combineReducers } from "redux";
 import today from "../../utils/calculateTodaysDate";
+import { SET_DATE, SET_DAYS, SET_LOCATION } from "../constants";
 
-export const defaultState = {
+const defaultState = {
     location: 'Москва',
     date: today,
-    days: '1',
-    items: [],
-    favorites: []
+    days: '1'
 }
 
-const test = (state = defaultState, action) =>{
+export const queryParams = (state = defaultState, action) =>{
     switch(action.type){
-        case 'getLocation' :
-            return state.location
-        case 'setLocation' :
+        case SET_LOCATION :
             return {...state,location:action.payload}
-        case 'getDays' :
-            return state.days
-        case 'setDays' :
+        case SET_DAYS :
             return {...state,days:action.payload}
-        case 'getDate' :
-            return state.date
-        case 'setDate' :
+        case SET_DATE :
             return {...state,date:action.payload}
-        case 'getItems' :
-            return state.items
-        case 'setItems' :
-            return {...state,items:action.payload}
-        case 'getFavorites' :
-            return state.favorites
-        case 'addToFavorites' :
-            return {...state,favorites:[...state.favorites,{...action.payload.item, days: action.payload.days}]}
-        case 'removeFromFavorites' :
-            return {...state,favorites:state.favorites.filter(el => el.hotelId !== action.payload)}
         default:
             return state
     }
 }
-
-
-const reducer = combineReducers({
-    test
-})
-
-export default reducer

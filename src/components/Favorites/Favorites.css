@@ -4,7 +4,6 @@
     border-radius: 16px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     padding: 32px;
     gap: 32px;
     width: 360px;
@@ -15,38 +14,51 @@
     font-size: 24px;
     line-height: 28px;
 }
-.favorite__filters{
+.favorite__sorts{
     display: flex;
     align-items: center;
     gap: 8px;
 }
-.rating-filter,
-.price-filter{
+.rating-sort,
+.price-sort{
     background: #FFFFFF;
-    border: 1px solid #41522E;
+    border: 1px solid #99A0A3;
     border-radius: 4px;
     padding: 4px 30px 4px 8px;
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
     letter-spacing: -0.408px;
-    color: #41522E;
+    color: #99A0A3;
     position: relative;
+    cursor: pointer;
 }
-.rating-filter .up-icon,
-.price-filter .up-icon{
+.active-sort{
+    border: 1px solid #41522E;
+    color: #41522E;
+}
+.up-icon,
+.up-icon{
+    width: 20px;
+    height: 20px;
     position: absolute;
-    right: 12.5px;
-    top: 8px;
+    right: 6.5px;
+    top: 0px;
+    color: #99A0A3;
 }
-.rating-filter .down-icon,
-.price-filter .down-icon{
+.down-icon,
+.down-icon{
+    width: 20px;
+    height: 20px;
     position: absolute;
-    right: 12.5px;
-    bottom: 8px;
-    color:#41522E;
+    right: 6.5px;
+    bottom: 0.5px;
+    color: #99A0A3;
 }
-.favorite__items{
+.active-icon{
+    color: #41522E;
+}
+.favorite-items{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -55,9 +67,35 @@
     height: 288px;
     overflow: auto;
 }
-.favorite__items .favorite__item{
+.favorite-item{
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+.found-item__star{
+    color: #C4C3B5
+}
+.active{
+    color: #CDBC1E;
+}
+.found-item__Heart{
+    width:30px;
+    height:27px;
+}
+.found-item__Heart_colored{
+    color:#E55858;
+}
+.found-item__Heart_outline{
+    color:#C4C4C4;
+}
+.favorite-item__price{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+.favorites-items__empty{
+    align-self: center;
 }
