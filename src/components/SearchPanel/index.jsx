@@ -1,10 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react'
 import './SearchPanel.css'
 import today from '../../utils/calculateTodaysDate'
-import defaultLastDay from '../../utils/calculateDefaultLastDay'
 import { calculateLastDay } from '../../utils/calculateLastDay'
 import { useDispatch, useSelector } from 'react-redux'
-import { setDateAction, setDaysAction, setItems, setLocationAction } from '../../redux/actionCreators'
+import { defaultFetchHotels, fetchHotels} from '../../redux/actionCreators'
 
 function SearchPanel() {
     const location = useSelector(store => store.queryParams.location)
@@ -17,28 +16,22 @@ function SearchPanel() {
     const locationRef = useRef()
     
     const dispatch = useDispatch()
+    
 
     useEffect(()=>{
-        fetch(`http://engine.hotellook.com/api/v2/cache.json?location=${locationValue}&currency=rub&checkIn=${dateRef.current.value}&checkOut=${defaultLastDay}&limit=20`)
-        .then(res => res.json())
-        .then(arr => {
-            dispatch(setItems(arr))
-        })
+        dispatch(defaultFetchHotels())
     },[])
 
     
 
     const handelSearch = () => {
-        const lastDay = calculateLastDay(dateRef.current.value, daysValue)
-        
-        fetch(`http://engine.hotellook.com/api/v2/cache.json?location=${locationValue}&currency=rub&checkIn=${dateRef.current.value}&checkOut=${lastDay}&limit=20`)
-        .then(res => res.json())
-        .then(arr => {
-            dispatch(setLocationAction(locationRef.current.value))
-            dispatch(setDateAction(dateRef.current.value))
-            dispatch(setDaysAction(daysRef.current.value))
-            dispatch(setItems(arr))
-        })
+        const currentDateValue = dateRef.current.value
+        const currentLocationValue = locationRef.current.value
+        const currentDaysValue = daysRef.current.value
+
+        const lastDay = calculateLastDay(currentDateValue, daysValue)
+
+        dispatch(fetchHotels({locationValue,currentDateValue,lastDay,currentLocationValue,currentDaysValue}))
     }
 
 

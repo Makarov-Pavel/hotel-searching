@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect } from 'react'
 import './Form.css'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -11,22 +11,20 @@ function Form() {
     const [emailError, setEmailError] = useState('Логин не может быть пустым')
     const [passwordError, setPasswordError] = useState('Пароль не может быть пустым')
     const [formValid, setFormValid] = useState(false)
-    const firstLoad = useRef(true)
     const navigate = useNavigate()
 
 
     useEffect(()=>{
         if(emailError || passwordError){
             setFormValid(false)
+            sessionStorage.setItem('loggedIn', 'false')
         } else{
             setFormValid(true)
         }
-
-        firstLoad.current = false
     },[emailError,passwordError])
 
     const emailHandler = (e) => {
-        setEmailValue(e.target.value)
+        setEmailValue()
         const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
         if(!re.test(String(e.target.value).toLowerCase())){
             setEmailError('Некорректный логин')
@@ -64,20 +62,25 @@ function Form() {
     }
 
     const addEmailErrorClass = () => {
-        return (emailError && firstLoad.current !== true) ? 'form__error-color' : ''
+        return (dirtyEmail && emailError) ? 'form__error-color' : ''
     }
     const addPasswordErrorClass = () => {
-        return (passwordError && firstLoad.current !== true) ? 'form__error-color' : ''
+        return (dirtyPassword && passwordError) ? 'form__error-color' : ''
     }
 
 
-    
-
+    const navigateHandler = () => {
+        formValid ? sessionStorage.setItem('loggedIn','true') : sessionStorage.setItem('loggedIn','false')
+        const loggedIn = sessionStorage.getItem('loggedIn')
+        if(loggedIn === 'true'){
+            navigate('/Hotels')
+        }
+    }
 
   return (
     <div className='form-container'>
         <h1>Simple Hotel Check</h1>
-        <form onSubmit={()=>navigate('/Hotels')} className='form'>
+        <form onSubmit={()=>navigateHandler()} className='form'>
             <div className='form__login-container'>
                 <label>
                     <span className={`${addEmailErrorClass()}`}>Логин</span>
@@ -92,7 +95,7 @@ function Form() {
                 </label>
                 {(dirtyPassword && passwordError)&&<span className='form__errorText'>{passwordError}</span>}
             </div>
-                <button disabled={formValid === false} type='submit' className='form__submit'>Войти</button>
+                <button disabled={formValid === false} type='submit'  className='form__submit'>Войти</button>
         </form>
     </div>
   )

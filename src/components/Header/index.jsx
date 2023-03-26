@@ -4,15 +4,20 @@ import './Header.css'
 
 function Header() {
   const navigate = useNavigate()
+
+  const exitClickHandler = () => {
+    sessionStorage.setItem('loggedIn','false')
+    navigate('/Login')
+  }
   
   return (
     <header className="header">
       <h2 className="header__logo">Simple Hotel Check</h2>
       <div className="header__exit">
-        <span onClick={()=>navigate('/Login')}>
+        <span onClick={()=>exitClickHandler()}>
           Выйти
         </span>
-        <img src="images/exit-icon.svg"/>
+        <img src="images/exit-icon.svg" alt="exit"/>
       </div>
       
     </header>
