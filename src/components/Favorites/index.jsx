@@ -7,7 +7,9 @@ import {HiHeart} from 'react-icons/hi'
 import { dateFormatChange } from '../../utils/dateFormatChange'
 import {MdKeyboardArrowDown} from 'react-icons/md'
 import {MdKeyboardArrowUp} from 'react-icons/md'
+import {RxDividerHorizontal} from 'react-icons/rx'
 import { addToFavorites, removeFromFavorites, setPriceHight, setPriceLow, setRatingHight, setRatingLow } from '../../redux/actionCreators'
+import { numberFormatChange } from '../../utils/numberFormatChange'
 
 function Favorite() {
     const favorites = useSelector(store => store.favoritesReducer.favorites)
@@ -51,7 +53,6 @@ function Favorite() {
         } else {
             dispatch(setRatingLow('ratingLow'))
         }
-        console.log(status, favorites)
     }
     const toggleSortPriceHandler = () => {
         if(status !== 'priceHight'){
@@ -59,7 +60,6 @@ function Favorite() {
         } else {
             dispatch(setPriceLow('priceLow'))
         }
-        console.log(status, favorites)
     }
 
     const sortRatingActiveClass = () => {
@@ -85,27 +85,32 @@ function Favorite() {
         <div className='favorite-items'>
             {favorites.length !== 0 ? favorites.map(el =>
             <div key={el.hotelId} className='favorite-item'>
-                <div>
-                   <h4>{el.hotelName}</h4>
-                   <div>
-                    <span>{dateFormatChange(date)}</span> - <span>{el.days} {daysWordHelper(el.days)}</span>
-                   </div>
-                   <div>
-                    <IoIosStar className={`found-item__star ${el.stars > 0 ?'active' : ''}`} />
-                    <IoIosStar className={`found-item__star ${el.stars > 1 ?'active' : ''}`} />
-                    <IoIosStar className={`found-item__star ${el.stars > 2 ?'active' : ''}`} />
-                    <IoIosStar className={`found-item__star ${el.stars > 3 ?'active' : ''}`} />
-                    <IoIosStar className={`found-item__star ${el.stars > 4 ?'active' : ''}`} />
-                   </div>
+                <div className='favorite-item__header-line'>
+                    <h4>{el.hotelName}</h4>
+                    {inFavorites(el) ? <HiHeart className='favorite-item__Heart favorite-item__Heart_colored' onClick={()=>toggleFavoritesHandler(el)}/> : <HiOutlineHeart className='favorite-item__Heart favorite-item__Heart_outline' onClick={()=>toggleFavoritesHandler(el)}/>}
                 </div>
-                <div className='favorite-item__price'>
-                {inFavorites(el) ? <HiHeart className='found-item__Heart found-item__Heart_colored' onClick={()=>toggleFavoritesHandler(el)}/> : <HiOutlineHeart className='found-item__Heart found-item__Heart_outline' onClick={()=>toggleFavoritesHandler(el)}/>}
-                    <span>{el.priceAvg} ₽</span>
+                   
+                <div className='favorite-item__middle-line'>
+                <span>{dateFormatChange(date)}</span> <RxDividerHorizontal/> <span>{el.days} {daysWordHelper(el.days)}</span>
                 </div>
+                   
+                <div className='favorite-item__footer-line'>
+                    <div>
+                        <IoIosStar className={`favorite-item__star ${el.stars > 0 ?'active' : ''}`} />
+                        <IoIosStar className={`favorite-item__star ${el.stars > 1 ?'active' : ''}`} />
+                        <IoIosStar className={`favorite-item__star ${el.stars > 2 ?'active' : ''}`} />
+                        <IoIosStar className={`favorite-item__star ${el.stars > 3 ?'active' : ''}`} />
+                        <IoIosStar className={`favorite-item__star ${el.stars > 4 ?'active' : ''}`} />
+                    </div>
+                    <div className='favorite-item__price'>
+                        <span className='price__text'>Price:</span><span className='price__number'>{numberFormatChange(el.priceAvg)} ₽</span>
+                    </div>
+                </div>
+                   
             </div>
             ) : 
             <div className='favorites-items__empty'>
-                <span >Пусто :(</span>
+                <span >Пусто</span>
             </div>}
         </div>
     </div>

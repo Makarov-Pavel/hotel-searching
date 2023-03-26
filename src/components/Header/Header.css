@@ -2,8 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 32px;
-    border: 1px solid #000;
+    padding: 31px 32px;
 }
 .header__logo{
     font-weight: 500;
@@ -16,5 +15,12 @@
     line-height: 20px;
     display: flex;
     align-items: center;
-    gap: 15px;
+    text-align: right;
+    letter-spacing: -0.408px;
+    gap: 12px;
+    color: #41522E;
+    cursor: pointer;
+}
+.header__exit:hover{
+    color: #41522e94;
 }

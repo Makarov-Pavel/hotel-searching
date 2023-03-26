@@ -8,7 +8,13 @@ function Header() {
   return (
     <header className="header">
       <h2 className="header__logo">Simple Hotel Check</h2>
-      <span className="header__exit" onClick={()=>navigate('/Login')}>Выйти <img src="images/exit-icon.svg"/></span>
+      <div className="header__exit">
+        <span onClick={()=>navigate('/Login')}>
+          Выйти
+        </span>
+        <img src="images/exit-icon.svg"/>
+      </div>
+      
     </header>
   );
 }

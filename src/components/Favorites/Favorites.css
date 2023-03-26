@@ -8,11 +8,12 @@
     gap: 32px;
     width: 360px;
 }
-.favorite-container h3{
+.favorite-container h4{
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 22px;
+    letter-spacing: -0.408px;
     color: #424242;
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 28px;
 }
 .favorite__sorts{
     display: flex;
@@ -63,39 +64,95 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 0px;
-    gap: 16px;
+    gap: 14px;
     height: 288px;
     overflow: auto;
 }
 .favorite-item{
     width: 100%;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: space-between;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(135, 135, 135, 0.2);;
+    
 }
-.found-item__star{
-    color: #C4C3B5
+.favorite-item__star{
+    color: #C4C3B5;
+    font-size: 18px;
 }
 .active{
     color: #CDBC1E;
 }
-.found-item__Heart{
+.favorite-item__Heart{
     width:30px;
     height:27px;
+    cursor: pointer;
 }
-.found-item__Heart_colored{
+.favorite-item__Heart_colored{
     color:#E55858;
 }
-.found-item__Heart_outline{
+.favorite-item__Heart_outline{
     color:#C4C4C4;
 }
 .favorite-item__price{
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    align-items: baseline;
+    gap: 16px;
     justify-content: space-between;
     height: 100%;
 }
+.favorite-item__header-line,
+.favorite-item__footer-line{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.favorite-item__footer-line{
+    margin-top: 5px;
+}
 .favorites-items__empty{
     align-self: center;
+    margin: auto 0;
+    color: #99A0A3;
+}
+.favorite-item__middle-line{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: -0.408px;
+    color: #878787;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.price__text{
+    font-weight: 300;
+    font-size: 11px;
+    line-height: 22px;
+    letter-spacing: -0.408px;
+    color: #878787;
+}
+.price__number{
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 22px;
+    text-align: right;
+    letter-spacing: -0.408px;
+    color: #424242;
+}
+
+.favorite-items::-webkit-scrollbar {
+    width: 2px;
+    background-color: #E7E7E7;
+}
+.favorite-items::-webkit-scrollbar-thumb {
+    background: #41522E;
+    border-radius: 2px;
+}
+.favorite-items {
+    scrollbar-width: thin;          /* "auto" или "thin" */
+    scrollbar-color: #41522E #E7E7E7;   /* цвет бегунка и зоны отслеживания */
 }

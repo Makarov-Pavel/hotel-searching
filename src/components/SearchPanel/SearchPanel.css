@@ -34,6 +34,9 @@
     width: 296px;
     margin-top: 7px;
 }
+.search-panel__date input{
+    padding: 14px;
+}
 .search-panel__location span,
 .search-panel__date span,
 .search-panel__days span{
@@ -46,7 +49,7 @@
     background: linear-gradient(104.34deg, #41522E -15.34%, #BE8022 145.95%);
     box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.15);
     border-radius: 4px;
-    padding: 19px 124.5px;
+    padding: 15px 124.5px;
     font-weight: 500;
     font-size: 16px;
     line-height: 20px;

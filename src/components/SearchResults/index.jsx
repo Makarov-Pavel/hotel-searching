@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import FoundItems from '../FoundItems'
 import {SlArrowRight} from 'react-icons/sl'
 import { dateFormatChange } from '../../utils/dateFormatChange'
+import SwiperComp from '../Swiper'
 
 function SearchResults() {
   const location = useSelector(store => store.queryParams.location)
@@ -24,15 +25,15 @@ function SearchResults() {
   return (
     <div className='search-results-container'>
         <header className='search-results__header'>
-          <div>
-            Отели <SlArrowRight /> {location}
+          <div className='search-results__text'>
+            Отели <SlArrowRight className='arrow-icon' /> {location}
           </div>
-          <div>
+          <div className='search-results__date'>
             {dateFormatChange(date)}
           </div>
         </header>
-        <div className='search-slider'>slider</div>
-        <p>Добавлено в Избранное: {favorites.length} {hotelsCountWordHelper(favorites.length)}</p>
+        <SwiperComp />
+        <p>Добавлено в Избранное: <span>{favorites.length}</span> {hotelsCountWordHelper(favorites.length)}</p>
         <FoundItems />
     </div>
   )

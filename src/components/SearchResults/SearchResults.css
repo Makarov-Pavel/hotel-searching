@@ -7,6 +7,7 @@
     background: #FFFFFF;
     box-shadow: 0px 4px 33px rgba(0, 0, 0, 0.04);
     border-radius: 16px;
+    height: 902px;
 }
 .search-results__header{
     display: flex;
@@ -20,4 +21,34 @@
 .search-slider{
     width: 600px;
     height: 149px;
+}
+.search-results-container p{
+    align-self: flex-start;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 22px;
+    color: #424242;
+}
+.search-results-container p span{
+    color: #41522E;
+    font-weight: 500;
+}
+.search-results__text{
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 38px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: #424242;
+}
+.arrow-icon{
+    color:#A7A7A7;
+    font-size: 19px;
+}
+.search-results__date{
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    color: #41522E;
 }

@@ -6,6 +6,8 @@ import {HiOutlineHeart} from 'react-icons/hi'
 import {HiHeart} from 'react-icons/hi'
 import { dateFormatChange } from '../../utils/dateFormatChange'
 import { addToFavorites, removeFromFavorites } from '../../redux/actionCreators'
+import { numberFormatChange } from '../../utils/numberFormatChange'
+import { RxDividerHorizontal } from 'react-icons/rx'
 
 function FoundItems() {
     const items = useSelector(store => store.itemsReducer.items)
@@ -45,21 +47,27 @@ function FoundItems() {
             <div key={el.hotelId} className='found-item'>
                 <img src='images/house.png' alt='house' ></img>
                 <div className='found-item__info'>
-                   <h4>{el.hotelName}</h4>
-                   <div>
-                    <span>{dateFormatChange(date)}</span> - <span>{days} {daysCounterWordHelper(days)}</span>
+                    <div className='found-item__header-line'>
+                      <h4>{el.hotelName}</h4>
+                      {inFavorites(el) ? <HiHeart className='found-item__Heart found-item__Heart_colored' onClick={()=>toggleFavoritesHandler(el)}/> : <HiOutlineHeart className='found-item__Heart found-item__Heart_outline' onClick={()=>toggleFavoritesHandler(el)}/>}
+                    </div>
+                   
+                   <div className='found-item__middle-line'>
+                        <span>{dateFormatChange(date)}</span> <RxDividerHorizontal/> <span>{days} {daysCounterWordHelper(days)}</span>
                    </div>
-                   <div>
-                    <IoIosStar className={`found-item__star ${el.stars > 0 ?'active' : ''}`} />
-                    <IoIosStar className={`found-item__star ${el.stars > 1 ?'active' : ''}`} />
-                    <IoIosStar className={`found-item__star ${el.stars > 2 ?'active' : ''}`} />
-                    <IoIosStar className={`found-item__star ${el.stars > 3 ?'active' : ''}`} />
-                    <IoIosStar className={`found-item__star ${el.stars > 4 ?'active' : ''}`} />
+
+                   <div className='found-item__footer-line'>
+                        <div>
+                            <IoIosStar className={`found-item__star ${el.stars > 0 ?'active' : ''}`} />
+                            <IoIosStar className={`found-item__star ${el.stars > 1 ?'active' : ''}`} />
+                            <IoIosStar className={`found-item__star ${el.stars > 2 ?'active' : ''}`} />
+                            <IoIosStar className={`found-item__star ${el.stars > 3 ?'active' : ''}`} />
+                            <IoIosStar className={`found-item__star ${el.stars > 4 ?'active' : ''}`} />
+                        </div> 
+                        <div className='found-item__price'>
+                            <span className='price__text'>Price:</span><span className='price__number'>{numberFormatChange(el.priceAvg)} ₽</span>
+                        </div>
                    </div>
-                </div>
-                <div className='found-item__price'>
-                    {inFavorites(el) ? <HiHeart className='found-item__Heart found-item__Heart_colored' onClick={()=>toggleFavoritesHandler(el)}/> : <HiOutlineHeart className='found-item__Heart found-item__Heart_outline' onClick={()=>toggleFavoritesHandler(el)}/>}
-                    <span>{el.priceAvg} ₽</span>
                 </div>
             </div>
             )
