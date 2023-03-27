@@ -95,7 +95,7 @@ function Form() {
                 </label>
                 {(dirtyPassword && passwordError)&&<span className='form__errorText'>{passwordError}</span>}
             </div>
-                <button disabled={formValid === false} type='submit'  className='form__submit'>Войти</button>
+                <button disabled={formValid === false} type='submit' className='form__submit'>Войти</button>
         </form>
     </div>
   )

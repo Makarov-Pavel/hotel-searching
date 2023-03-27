@@ -1,6 +1,6 @@
 import {applyMiddleware, createStore} from 'redux'
 import { combineReducers } from "redux";
-import { queryParams } from './reducers';
+import { queryParams } from './reducers/queryParams';
 import { favoritesReducer } from './reducers/favoritesReducer';
 import { itemsReducer } from './reducers/itemsReducer';
 import createSagaMiddleware from '@redux-saga/core';
