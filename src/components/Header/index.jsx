@@ -13,8 +13,8 @@ function Header() {
   return (
     <header className="header">
       <h2 className="header__logo">Simple Hotel Check</h2>
-      <div className="header__exit">
-        <span onClick={()=>exitClickHandler()}>
+      <div className="header__exit" onClick={()=>exitClickHandler()}>
+        <span>
           Выйти
         </span>
         <img src="images/exit_icon.svg" alt="exit"/>
