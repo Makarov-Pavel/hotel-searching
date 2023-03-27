@@ -17,7 +17,7 @@ function Header() {
         <span onClick={()=>exitClickHandler()}>
           Выйти
         </span>
-        <img src="images/exit-icon.svg" alt="exit"/>
+        <img src="images/exit_icon.svg" alt="exit"/>
       </div>
       
     </header>
