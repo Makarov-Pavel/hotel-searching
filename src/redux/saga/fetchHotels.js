@@ -5,7 +5,7 @@ import { FETCH_HOTELS } from '../constants'
 
 
 function* fetchWorker (action) {
-    const fetchApi = () => fetch(`http://engine.hotellook.com/api/v2/cache.json?location=${action.payload.locationValue}&currency=rub&checkIn=${action.payload.currentDateValue}&checkOut=${action.payload.lastDay}&limit=30`)
+    const fetchApi = () => fetch(`https://engine.hotellook.com/api/v2/cache.json?location=${action.payload.locationValue}&currency=rub&checkIn=${action.payload.currentDateValue}&checkOut=${action.payload.lastDay}&limit=30`)
     const data = yield call(fetchApi)
     const arr = yield call(()=>new Promise(res => res(data.json())))
     yield put(setLocationAction(action.payload.currentLocationValue))

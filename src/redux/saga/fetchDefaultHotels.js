@@ -5,7 +5,7 @@ import { setItems } from '../actionCreators'
 import { DEFAULT_FETCH_HOTELS } from '../constants'
 
 const location = 'Москва'
-const defaultFetch = () => fetch(`http://engine.hotellook.com/api/v2/cache.json?location=${location}&currency=rub&checkIn=${today}&checkOut=${defaultLastDay}&limit=30`)
+const defaultFetch = () => fetch(`https://engine.hotellook.com/api/v2/cache.json?location=${location}&currency=rub&checkIn=${today}&checkOut=${defaultLastDay}&limit=30`)
 
 function* defaultFetchWorker () {
     const data = yield call(defaultFetch)
