@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef, useState, useEffect, useCallback} from 'react'
 import './SearchPanel.css'
 import today from '../../utils/calculateTodaysDate'
 import { calculateLastDay } from '../../utils/calculateLastDay'
@@ -22,7 +22,6 @@ function SearchPanel() {
         dispatch(defaultFetchHotels())
     },[])
 
-    
 
     const handelSearch = () => {
         const currentDateValue = dateRef.current.value
@@ -30,8 +29,7 @@ function SearchPanel() {
         const currentDaysValue = daysRef.current.value
 
         const lastDay = calculateLastDay(currentDateValue, daysValue)
-
-        dispatch(fetchHotels({locationValue,currentDateValue,lastDay,currentLocationValue,currentDaysValue}))
+    dispatch(fetchHotels({locationValue,currentDateValue,lastDay,currentLocationValue,currentDaysValue}))
     }
 
 

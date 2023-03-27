@@ -26,7 +26,7 @@ function SearchResults() {
     <div className='search-results-container'>
         <header className='search-results__header'>
           <div className='search-results__text'>
-            Отели <SlArrowRight className='arrow-icon' /> {location}
+            Отели <SlArrowRight className='arrow-icon' /> {location.substring(0,1).toUpperCase() + location.substring(1)}
           </div>
           <div className='search-results__date'>
             {dateFormatChange(date)}

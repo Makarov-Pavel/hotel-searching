@@ -2,6 +2,8 @@
     height: 521px;
     width: 600px;
     overflow: auto;
+    display: flex;
+    flex-direction: column;
 }
 .found-item{
     display: flex;
@@ -103,4 +105,8 @@ img[alt='house']{
 .found-items-container {
     scrollbar-width: thin;          /* "auto" или "thin" */
     scrollbar-color: #41522E #E7E7E7;   /* цвет бегунка и зоны отслеживания */
+}
+.check-text{
+    align-self: center;
+    margin: auto 0;
 }

@@ -7,7 +7,7 @@ function Header() {
 
   const exitClickHandler = () => {
     sessionStorage.setItem('loggedIn','false')
-    navigate('/Login')
+    navigate('/')
   }
   
   return (

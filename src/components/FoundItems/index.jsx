@@ -16,6 +16,8 @@ function FoundItems() {
     const days = useSelector(store => store.queryParams.days)
     const dispatch = useDispatch()
 
+    console.log(items[0] === undefined)
+
     const daysCounterWordHelper = (days) => {
         let str = String(days)
         if(str[str.length - 1] === '1'){
@@ -40,10 +42,11 @@ function FoundItems() {
             dispatch(addToFavorites({item,days}))
         } 
     }
+    
 
   return (
     <div className='found-items-container'>
-        {items.map(el => 
+        {items[0] !== undefined ? items.map(el => 
             <div key={el.hotelId} className='found-item'>
                 <img src='images/house.png' alt='house' ></img>
                 <div className='found-item__info'>
@@ -71,7 +74,7 @@ function FoundItems() {
                 </div>
             </div>
             )
-        }
+        :<span className='check-text'>Проверьте введенные данные</span>}
     </div>
   )
 }
