@@ -27,7 +27,7 @@ function Form() {
         setEmailValue(e.target.value)
         const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
         if(!re.test(String(e.target.value).toLowerCase())){
-            setEmailError('Некорректный логин')
+            setEmailError('Некорректный логин ( требуется email )')
         } else {
             setEmailError('')
         }
