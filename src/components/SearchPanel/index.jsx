@@ -27,7 +27,7 @@ function SearchPanel() {
         if(+daysRef.current.value === 0){setDaysValue(1)}
         const currentDateValue = dateRef.current.value
         const currentLocationValue = locationRef.current.value
-        const currentDaysValue = daysRef.current.value > 0 ? daysRef.current.value : 1
+        const currentDaysValue =  +daysRef.current.value > 0 ? daysRef.current.value : 1
 
         const lastDay = calculateLastDay(currentDateValue, daysValue)
         dispatch(fetchHotels({locationValue,currentDateValue,lastDay,currentLocationValue,currentDaysValue}))
@@ -44,7 +44,7 @@ function SearchPanel() {
             </div>
             <div className='search-panel__date'>
                 <span>Дата заселения</span>
-                <input ref={dateRef} type='date' defaultValue={today}></input>
+                <input ref={dateRef} type='date' defaultValue={today} min={today}></input>
             </div>
             <div className='search-panel__days'>
                 <span>Количество дней</span>
@@ -52,7 +52,7 @@ function SearchPanel() {
             </div>
         </div>
         
-        <button className='search-panel__search-btn' onClick={()=>handelSearch()} >Найти</button>
+        <button disabled={locationValue === '' || daysValue * 1 !== +daysValue} className='search-panel__search-btn' onClick={()=>handelSearch()} >Найти</button>
     </div>
   )
 }

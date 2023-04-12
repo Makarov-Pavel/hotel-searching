@@ -16,8 +16,6 @@ function FoundItems() {
     const days = useSelector(store => store.queryParams.days)
     const dispatch = useDispatch()
 
-    console.log(items[0] === undefined)
-
     const daysCounterWordHelper = (days) => {
         let str = String(days)
         if(str[str.length - 1] === '1'){
