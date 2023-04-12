@@ -17,14 +17,11 @@ function FoundItems() {
     const dispatch = useDispatch()
 
     const daysCounterWordHelper = (days) => {
-        let str = String(days)
-        if(str[str.length - 1] === '1'){
-            return 'день'
-        } else if(Number(str[str.length - 1]) > 1 && Number(str[str.length - 1]) < 5){
-            return 'дня'
-        } else {
-            return 'дней'
-        }
+        if (days > 10 && [11, 12, 13, 14].includes(days%100)) return 'дней';
+        let lastNum = days%10;
+        if (lastNum == 1) return 'день';
+        if ([2,3,4].includes(lastNum)) return 'дня';
+        if ([5,6,7,8,9,0].includes(lastNum)) return 'дней';
     }
 
     const inFavorites = (item) => {
