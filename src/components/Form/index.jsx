@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import './Form.css'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import {AiOutlineInfoCircle} from 'react-icons/ai'
 
 function Form() {
     const [emailValue, setEmailValue] = useState('')
@@ -12,6 +13,9 @@ function Form() {
     const [passwordError, setPasswordError] = useState('Пароль не может быть пустым')
     const [formValid, setFormValid] = useState(false)
     const navigate = useNavigate()
+
+    const [loginRules, setLoginRules] = useState(false)
+    const [passwordRules, setPasswordRules] = useState(false)
 
 
     useEffect(()=>{
@@ -83,16 +87,18 @@ function Form() {
         <form onSubmit={()=>navigateHandler()} className='form'>
             <div className='form__login-container'>
                 <label>
-                    <span className={`${addEmailErrorClass()}`}>Логин</span>
+                    <span className={`form__label-text ${addEmailErrorClass()}`}>Логин <AiOutlineInfoCircle onMouseOver={()=>setLoginRules(true)} onMouseLeave={()=>setLoginRules(false)} style={{color:'#9c9c9c'}}/></span>
                     <input className={`${addEmailErrorClass()}`} onBlur={e => blurHandler(e)} type='email' name='email' value={emailValue} onChange={(e)=>emailHandler(e)} required/>  
                 </label>
+                {loginRules && <p className='form__rules login-rules'>Email</p>}
                 {(dirtyEmail && emailError)&&<span className='form__errorText'>{emailError}</span>}
             </div>
             <div className='form__password-container'>
                 <label>
-                <span className={`${addPasswordErrorClass()}`}>Пароль</span>
+                    <span className={`form__label-text ${addPasswordErrorClass()}`}>Пароль <AiOutlineInfoCircle onMouseOver={()=>setPasswordRules(true)} onMouseLeave={()=>setPasswordRules(false)} style={{color:'#9c9c9c'}}/></span>
                     <input className={`${addPasswordErrorClass()}`} onBlur={e => blurHandler(e)} type='password' name='password' value={passwordValue} onChange={(e)=>passwordHandler(e)}  autoComplete='off'/> 
                 </label>
+                {passwordRules && <p className='form__rules pass-rules'>от 8 символов; без кириллицы</p>}
                 {(dirtyPassword && passwordError)&&<span className='form__errorText'>{passwordError}</span>}
             </div>
                 <button disabled={formValid === false} type='submit' className='form__submit'>Войти</button>

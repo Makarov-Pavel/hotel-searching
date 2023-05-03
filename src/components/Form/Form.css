@@ -62,3 +62,41 @@ form input{
 .form__error-color{
     color: #EB1717;
 }
+.form__label-text{
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+.form__rules{
+    font-size: 15px;
+    position: absolute;
+    background-color: #bebebe46;
+    color: #494949;
+    border-radius: 5px;
+    padding: 0 5px;
+    animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+.login-rules{
+    top: 38.5%;
+    left: 44%;
+}
+.pass-rules{
+    top: 49%;
+    left: 45%;
+}
+
+
+
+
+
+@keyframes slide-in-left {
+    0% {
+      transform: translateX(20px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
